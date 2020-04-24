@@ -1,0 +1,6 @@
+.card{
+    display: inline-block;
+    margin: auto;
+    background-color : yellow;
+    padding: 50px 30px;
+}
