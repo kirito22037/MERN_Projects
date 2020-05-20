@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 let initState = {
     authentication : {
@@ -16,6 +17,9 @@ const rootReducer = (state = initState, action)=>{
     {
         console.log("the reducer is called of type : ",action.type);
         console.log(action.data);
+
+        Cookies.set('token' , action.data.token);
+        
         return ({
             ...state,
             authentication : {
@@ -31,8 +35,6 @@ const rootReducer = (state = initState, action)=>{
     {
         //make a api req 
         //then update the store by returning the store
-        console.log("the data that is added is : ");
-        console.log(action.data);
         return {
             ...state ,
             tasks : [...state.tasks , action.data]
@@ -41,9 +43,6 @@ const rootReducer = (state = initState, action)=>{
 
     else if(action.type === "load tasks")
     {
-        console.log("the data that is loaded to store is : ");
-        console.log(action.data);
-
         return {
             ...state,
             tasks : action.data
@@ -53,7 +52,6 @@ const rootReducer = (state = initState, action)=>{
     else if(action.type === "delete task")
     {
         //make request to delete
-        console.log("action is called : ",action.type);
         axios.post('http://localhost:5000/todo/deleteTask' , {
             taskId : action.data,
             token : state.authentication.token
@@ -76,7 +74,6 @@ const rootReducer = (state = initState, action)=>{
 
     else if(action.type === "update task status")
     {
-        console.log(action.type);
         //make a req to update status in db
         axios.post('http://localhost:5000/todo/statUpdate',{
             taskId : action.data,

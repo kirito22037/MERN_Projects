@@ -3,7 +3,6 @@ import {Link ,withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
-
 const handleSubmit= (props , e)=>{
     e.preventDefault();
     console.log("form is submited");
@@ -19,10 +18,10 @@ const handleSubmit= (props , e)=>{
         password : password
     })
     .then(res=>{
-        console.log("resposne of login : ",res);
+        //console.log("resposne of login : ",res);
         if(res.data.auth)
         {
-            console.log("token : ",res.data.token);
+            //console.log("token : ",res.data.token);
 
             //change the store data here
             props.updateAuth(res.data);

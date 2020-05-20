@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const newTaskAsyncAction = (data)=>{
-    return ((dispatch , setState)=>{
+    return (( dispatch )=>{
 
         axios.post('http://localhost:5000/todo/newtask',{
             token : data.token,

@@ -19,7 +19,9 @@ const completedstyle={
 
 //-------------parent-------------
 const Collection =(props)=>{
-   
+                
+                console.log("tasks : ",props.tasks);
+
                 if(props.tasks.length === 0)
                 {
                     return (<h3 className="center">No Tasks Yet</h3>);
@@ -53,6 +55,7 @@ const Collection =(props)=>{
             };
 
 const mapStateToProps = (state, ownProp)=>{
+    console.log("state from collection : ", state);
     return ({
         tasks : state.tasks
     });
